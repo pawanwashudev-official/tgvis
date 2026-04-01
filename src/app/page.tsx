@@ -99,6 +99,8 @@ export default function Home() {
             fill
             className="object-cover"
             priority
+            quality={85}
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/60 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66] via-transparent to-transparent" />
@@ -147,7 +149,15 @@ export default function Home() {
             >
               <div className="relative w-[400px] h-[400px] rounded-full liquid-glass flex items-center justify-center p-12 glass-border-glow shadow-[0_0_50px_rgba(45,212,191,0.2)]">
                 <div className="relative w-full h-full animate-float flex items-center justify-center">
-                  <Image src="/logo.png" alt="TGVIS Official Logo" fill className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" />
+                  <Image 
+                    src="/logo.png" 
+                    alt="TGVIS Official Logo" 
+                    fill 
+                    className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" 
+                    priority
+                    quality={90}
+                    sizes="(max-width: 1024px) 100vw, 400px"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -212,17 +222,17 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-8 p-6 rounded-[4rem] liquid-glass-premium glass-border-glow shadow-2xl">
               <div className="space-y-8">
                 <div className="relative h-64 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/students-1.jpg" alt="Students" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <Image src="/gallery/students-1.jpg" alt="Students" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
                 <div className="relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/campus-2.jpg" alt="Campus" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <Image src="/gallery/campus-2.jpg" alt="Campus" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
               </div>
               <div className="space-y-8 pt-16">
                 <div className="relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/activity-1.jpg" alt="Activities" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <Image src="/gallery/activity-1.jpg" alt="Activities" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
                 <div className="relative h-64 rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#0d3b66] to-teal-900 flex items-center justify-center p-10 text-center glass-border-glow group">
@@ -339,7 +349,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02, rotateZ: i % 2 === 0 ? 1 : -1 }}
                 className={`group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-teal-500/20 transition-all ${i === 0 ? "col-span-2 row-span-2 h-[400px] md:h-[600px]" : "h-56 md:h-72"}`}
               >
-                <Image src={img.src} alt={img.label} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 50vw, 33vw" />
+                <Image src={img.src} alt={img.label} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" quality={75} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                   <p className="text-white text-lg font-bold tracking-tight">{img.label}</p>
