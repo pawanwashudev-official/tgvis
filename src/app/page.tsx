@@ -124,7 +124,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={stagger}
-            className="grid grid-cols-2 md:grid-cols-4 rounded-2xl bg-white shadow-2xl shadow-slate-900/10 border border-slate-100 overflow-hidden"
+            className="grid grid-cols-2 md:grid-cols-4 rounded-3xl liquid-glass overflow-hidden"
           >
             {[
               { value: "CBSE", label: "Board Affiliation" },
@@ -132,7 +132,7 @@ export default function Home() {
               { value: "4.3★", label: "Parent Rating" },
               { value: "7 AM", label: "School Opens" },
             ].map((s, i) => (
-              <motion.div key={i} variants={fadeUp} className="p-6 md:p-8 text-center border-b md:border-b-0 border-r border-slate-100 last:border-r-0">
+              <motion.div key={i} variants={fadeUp} className="p-6 md:p-8 text-center border-b md:border-b-0 border-white/20 last:border-r-0">
                 <p className="text-2xl md:text-3xl font-black text-[#0d3b66]">{s.value}</p>
                 <p className="mt-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">{s.label}</p>
               </motion.div>
@@ -224,7 +224,7 @@ export default function Home() {
               { icon: Bus, title: "School Transport", desc: "Safe and reliable school bus service covering Bihta and surrounding areas." },
               { icon: GraduationCap, title: "CBSE Academics", desc: "Structured academic framework from pre-primary through senior secondary." },
             ].map((f, i) => (
-              <motion.div key={i} variants={fadeUp} whileHover={{ y: -6 }} className="group rounded-2xl bg-white p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-teal-200 transition-all">
+              <motion.div key={i} variants={fadeUp} whileHover={{ y: -10 }} className="group rounded-[2.5rem] liquid-glass p-8 hover:border-teal-400/50">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0d3b66] to-teal-600 text-white shadow-lg shadow-teal-500/20 mb-6 group-hover:scale-110 transition-transform">
                   <f.icon className="h-7 w-7" />
                 </div>
@@ -270,7 +270,13 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-blue-400/10 blur-[80px]" />
         </div>
         <div className="mx-auto max-w-4xl px-6 relative z-10 text-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="rounded-[3rem] liquid-glass-dark p-12 md:p-20"
+          >
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 mb-8">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />

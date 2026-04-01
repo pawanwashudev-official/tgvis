@@ -146,3 +146,12 @@
 
 .animation-delay-2000 { animation-delay: 2s; }
 .animation-delay-4000 { animation-delay: 4s; }
+
+@layer utilities {
+  .liquid-glass {
+    @apply bg-white/70 backdrop-blur-2xl border border-white/50 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(13,59,102,0.1)] transition-all;
+  }
+  .liquid-glass-dark {
+    @apply bg-[#0d3b66]/70 backdrop-blur-2xl border border-white/20 shadow-2xl hover:bg-[#0d3b66]/80 transition-all text-white;
+  }
+}
