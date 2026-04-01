@@ -13,8 +13,8 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-[#0d3b66] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-16">
+      <footer className="relative z-50 bg-[#0d3b66] text-white border-t border-white/10 shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
+        <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
               <div className="flex items-center gap-3 mb-5">
