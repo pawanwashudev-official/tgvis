@@ -18,8 +18,8 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="relative h-12 w-12 rounded-full overflow-hidden bg-white p-0.5 shadow-sm">
-                  <Image src="/logo.jpg" alt="TGVIS" fill className="object-contain" />
+                <div className="relative h-12 w-12 rounded-full overflow-hidden bg-white p-1 shadow-sm">
+                  <Image src="/logo.png" alt="TGVIS" fill className="object-contain" />
                 </div>
                 <div>
                   <p className="font-bold text-lg">TGVIS</p>
@@ -42,10 +42,10 @@ export default function Footer() {
             <div>
               <h4 className="text-sm font-bold uppercase tracking-wider text-teal-300 mb-6">Quick Links</h4>
               <ul className="space-y-3 text-sm text-blue-200/60">
-                <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+                <li><Link href="/#about" className="hover:text-white transition-colors">Our Story</Link></li>
                 <li><Link href="/gallery" className="hover:text-white transition-colors">Photo Gallery</Link></li>
-                <li><Link href="/admissions" className="hover:text-white transition-colors">Admissions</Link></li>
-                <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+                <li><Link href="/admissions" className="hover:text-white transition-colors">Admissions 2026-27</Link></li>
+                <li><Link href="/#contact" className="hover:text-white transition-colors">Contact Support</Link></li>
               </ul>
             </div>
 
@@ -84,7 +84,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-blue-200/40">
-            <p>© {new Date().getFullYear()} The Green Valley International School, Bihta. All rights reserved.</p>
+            <p>© {new Date().getFullYear() || 2027} The Green Valley International School, Bihta. All rights reserved.</p>
             <div className="flex items-center gap-3">
               <span>Official Website of TGVIS</span>
               <button

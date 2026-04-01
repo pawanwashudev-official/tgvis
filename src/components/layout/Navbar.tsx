@@ -8,10 +8,10 @@ import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "Our Story", href: "/#about" },
   { label: "Gallery", href: "/gallery" },
   { label: "Admissions", href: "/admissions" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -34,7 +34,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative h-12 w-12 shrink-0 rounded-full overflow-hidden border-2 border-white/30 shadow-md group-hover:shadow-lg transition-shadow bg-white">
-            <Image src="/logo.jpg" alt="TGVIS Logo" fill className="object-contain p-0.5" priority />
+            <Image src="/logo.png" alt="TGVIS Logo" fill className="object-contain p-1" priority />
           </div>
           <div className="hidden sm:block leading-tight">
             <p className="text-sm font-extrabold tracking-tight text-[#0d3b66]">The Green Valley</p>

@@ -21,17 +21,38 @@ export default function AdmissionsPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-28 pb-20 bg-gradient-to-br from-[#0d3b66] to-[#1a6b6a]">
+      <section className="relative pt-40 pb-32 bg-gradient-to-br from-[#0d3b66] via-[#0f4c75] to-[#1a6b6a] overflow-hidden perspective-container">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-teal-400/10 blur-[120px] animate-blob" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[120px] animate-blob animation-delay-2000" />
+        </div>
         <div className="mx-auto max-w-7xl px-6 text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 mb-6">
-            <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-teal-400" /></span>
-            <span className="text-sm font-medium text-white/90">Admissions Open 2025-26</span>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 backdrop-blur-xl px-6 py-2 mb-10 shadow-2xl"
+          >
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-teal-400" />
+            </span>
+            <span className="text-sm font-black text-white uppercase tracking-[0.2em]">Admissions Open 2026-27</span>
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
-            Join <span className="text-teal-300">TGVIS</span> Today
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.95 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            transition={{ duration: 0.8 }} 
+            className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-[1] text-glow"
+          >
+            Secure Your Child&apos;s <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-200">Future Experience</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mt-4 text-lg text-blue-100/70 max-w-2xl mx-auto">
-            We follow a structured, fair and transparent admission process. Begin your child&apos;s journey to excellence.
+          <motion.p 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.3 }} 
+            className="mt-10 text-xl text-blue-100/70 max-w-3xl mx-auto font-medium leading-relaxed"
+          >
+            Welcome to the Session 2026-27 enrolment gateway. We invite you to join Bihar&apos;s most progressive educational community at Bihta, Patna.
           </motion.p>
         </div>
       </section>
