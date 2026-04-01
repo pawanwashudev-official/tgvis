@@ -87,14 +87,13 @@ export default function Footer() {
             <p>© {new Date().getFullYear() || 2027} The Green Valley International School, Bihta. All rights reserved.</p>
             <div className="flex items-center gap-3">
               <span>Official Website of TGVIS</span>
-              <button
-                onClick={() => setDevOpen(true)}
-                className="w-6 h-6 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center transition-all"
-                aria-label="Developer Info"
-                title="Developer Info"
-              >
-                <Info className="w-3.5 h-3.5 text-blue-200/30 hover:text-blue-200/60" />
-              </button>
+            <button
+              onClick={() => setDevOpen(true)}
+              className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center gap-2 transition-all group active:scale-95"
+            >
+              <Info className="w-3.5 h-3.5 text-teal-400" />
+              <span className="text-xs font-bold text-blue-200/60 group-hover:text-white transition-colors uppercase tracking-widest">About Developer</span>
+            </button>
             </div>
           </div>
         </div>
