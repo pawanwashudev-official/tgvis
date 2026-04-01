@@ -62,7 +62,6 @@ export default function Home() {
   const heroScale = useTransform(scrollY, [0, 800], [1, 0.85]);
   const heroRotateX = useTransform(scrollY, [0, 800], [0, 10]);
   const heroOpacity = useTransform(scrollY, [0, 800], [1, 0.2]);
-  const heroBlur = useTransform(scrollY, [0, 800], [0, 10]);
 
   // Section-specific transforms for "Stacked" feel
   const storyScale = useTransform(scrollYProgress, [0.1, 0.3], [0.95, 1]);
@@ -88,10 +87,10 @@ export default function Home() {
       <Navbar />
 
       {/* ═══════════════════ HERO (BASE LAYER) ═══════════════════ */}
-      <motion.section className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0">
+      <motion.section className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0 will-change-transform">
         <motion.div 
-          style={{ scale: heroScale, rotateX: heroRotateX, opacity: heroOpacity, filter: `blur(${heroBlur}px)`, y: contentY }} 
-          className="absolute inset-0"
+          style={{ scale: heroScale, rotateX: heroRotateX, opacity: heroOpacity, y: contentY }} 
+          className="absolute inset-0 will-change-transform"
         >
           <Image
             src="/featured.jpg"
@@ -209,7 +208,7 @@ export default function Home() {
       <motion.section 
         style={{ scale: storyScale, rotateX: storyRotateX, y: storyIn }}
         id="about" 
-        className="relative min-h-screen py-32 lg:py-48 perspective-container bg-white/20 backdrop-blur-3xl shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/30"
+        className="relative min-h-screen py-32 lg:py-48 perspective-container bg-white/20 backdrop-blur-3xl shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/30 will-change-transform"
       >
         <div className="mx-auto max-w-7xl px-6">
           <motion.div 
@@ -278,7 +277,7 @@ export default function Home() {
       {/* ═══════════════════ FACILITIES (ROLLER DIVE) ═══════════════════ */}
       <motion.section 
         style={{ scale: facilitiesScale, rotateX: facilitiesRotateX }}
-        className="relative min-h-screen py-40 bg-slate-50/20 backdrop-blur-[60px] perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/40"
+        className="relative min-h-screen py-40 bg-slate-50/20 backdrop-blur-[60px] perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/40 will-change-transform"
       >
         <div className="mx-auto max-w-7xl px-6">
           <motion.div 
