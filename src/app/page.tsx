@@ -41,15 +41,15 @@ const unfold: Variants = {
 
 /* ─── local gallery images ─── */
 const GALLERY = [
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=School+Building", label: "School Building" },
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Classrooms", label: "Classrooms" },
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Labs", label: "Science & Computer Labs" },
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Assembly", label: "Morning Assembly" },
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Programs", label: "School Programs" },
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=PTM", label: "Parent Teacher Meeting" },
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Result+Celebrations", label: "Result Celebrations" },
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Experiments", label: "Experiments" },
-  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Playground", label: "Playground & Sports" },
+  { src: "/gallery/campus-hero-new.jpg", label: "School Building" },
+  { src: "/gallery/classroom-new.jpg", label: "Classrooms" },
+  { src: "/gallery/science-lab-new.jpg", label: "Science Lab" },
+  { src: "/gallery/computer-lab-new.jpg", label: "Computer Lab" },
+  { src: "/gallery/library-new.jpg", label: "Library" },
+  { src: "/gallery/cultural-event-new.jpg", label: "School Programs" },
+  { src: "/gallery/tgvis-campus-life.jpg", label: "Campus Life" },
+  { src: "/gallery/sports-ground.jpg", label: "Playground & Sports" },
+  { src: "/gallery/tgvis-classroom.jpg", label: "Junior Classroom" },
 ];
 
 export default function Home() {
@@ -219,35 +219,9 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, margin: "-150px" }}
             variants={foldInLeft}
-            className="grid lg:grid-cols-2 gap-24 items-center"
+            className="max-w-4xl mx-auto"
           >
-            <div className="grid grid-cols-2 gap-8 p-6 rounded-[4rem] liquid-glass-premium glass-border-glow shadow-2xl">
-              <div className="space-y-8">
-                <div className="relative h-64 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/students-1.jpg" alt="Students" fill className="object-contain bg-slate-100 group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
-                </div>
-                <div className="relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/campus-2.jpg" alt="Campus" fill className="object-contain bg-slate-100 group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
-                </div>
-              </div>
-              <div className="space-y-8 pt-16">
-                <div className="relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/activity-1.jpg" alt="Activities" fill className="object-contain bg-slate-100 group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
-                </div>
-                <div className="relative h-64 rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#0d3b66] to-teal-900 flex items-center justify-center p-10 text-center glass-border-glow group">
-                  <div className="relative z-10 transition-transform group-hover:scale-110 duration-500">
-                    <p className="text-6xl font-black text-white text-glow">579+</p>
-                    <p className="text-xs font-bold text-teal-300 mt-3 uppercase tracking-[0.3em]">Campus Moments</p>
-                  </div>
-                  <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:pl-12">
+            <div className="text-center">
               <motion.span variants={fadeUp} className="text-sm font-black text-teal-600 uppercase tracking-[0.4em]">Establishment & Values</motion.span>
               <motion.h2 variants={fadeUp} className="mt-6 text-5xl lg:text-7xl font-extrabold text-[#0d3b66] tracking-tighter leading-[1] drop-shadow-sm">
                 Crafting <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">Greatness</span> Since Day One
@@ -343,15 +317,16 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
             {GALLERY.map((img, i) => (
               <motion.div 
                 key={i} 
                 variants={fadeUp} 
                 whileHover={{ scale: 1.02, rotateZ: i % 2 === 0 ? 1 : -1 }}
-                className={`group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-teal-500/20 transition-all ${i === 0 ? "col-span-2 row-span-2 h-[400px] md:h-[600px]" : "h-56 md:h-72"}`}
+                className="group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-teal-500/20 transition-all break-inside-avoid inline-block w-full"
               >
-                <Image src={img.src} alt={img.label} fill className="object-contain bg-slate-100 transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" quality={75} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img.src} alt={img.label} className="w-full h-auto bg-slate-100 transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                   <p className="text-white text-lg font-bold tracking-tight">{img.label}</p>
