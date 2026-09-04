@@ -11,11 +11,12 @@ import Link from "next/link";
 import {
   ChevronRight, BookOpen, Users, Award, Beaker, Trophy,
   Laptop, Palette, Bus, GraduationCap, Phone, Star,
-  Target, Heart, MapPin, Mail, Clock, MessageCircle, Send
+  Target, Heart, MapPin, Mail, Clock, MessageCircle, Send, ArrowRight, ArrowLeft
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 /* ─── animation helpers ─── */
 const fadeUp: Variants = {
@@ -41,18 +42,25 @@ const unfold: Variants = {
 
 /* ─── local gallery images ─── */
 const GALLERY = [
-  { src: "/gallery/campus-hero-new.jpg", label: "School Building" },
+  { src: "/gallery/trip.jpg", label: "School Trip" },
+  { src: "/gallery/science-exibt.jpg", label: "Science Exhibition" },
   { src: "/gallery/classroom-new.jpg", label: "Classrooms" },
-  { src: "/gallery/science-lab-new.jpg", label: "Science Lab" },
-  { src: "/gallery/computer-lab-new.jpg", label: "Computer Lab" },
-  { src: "/gallery/library-new.jpg", label: "Library" },
-  { src: "/gallery/cultural-event-new.jpg", label: "School Programs" },
-  { src: "/gallery/tgvis-campus-life.jpg", label: "Campus Life" },
-  { src: "/gallery/sports-ground.jpg", label: "Playground & Sports" },
-  { src: "/gallery/tgvis-classroom.jpg", label: "Junior Classroom" },
+  { src: "/gallery/lab-new.webp", label: "Laboratories" },
+  { src: "/gallery/ceremony.jpg", label: "Ceremony" },
+  { src: "/gallery/classroom-8B.jpeg", label: "Junior Classroom" },
 ];
 
 export default function Home() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center", skipSnaps: false });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -96,10 +104,10 @@ export default function Home() {
           className="absolute inset-0 will-change-transform"
         >
           <Image
-            src="/featured.jpg"
-            alt="Campus"
+            src="/gallery/hero.png"
+            alt="The Green Valley International School Building"
             fill
-            className="object-contain bg-slate-100"
+            className="object-cover object-left bg-slate-100"
             priority
             quality={85}
             sizes="100vw"
@@ -131,13 +139,30 @@ export default function Home() {
                 A prestigious CBSE-affiliated school in Bihta, Patna — where every child discovers their potential through world-class education and a nurturing environment.
               </motion.p>
 
-              <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
-                <Link href="/admissions" className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-[#0d3b66] shadow-xl shadow-black/20 hover:bg-teal-50 transition-all hover:scale-105">
-                  Start Admission <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link href="/gallery" className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-md px-8 py-4 text-sm font-semibold text-white hover:bg-white/20 transition-all">
-                  Explore Campus
-                </Link>
+              <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-6 items-center">
+                {[
+                  { icon: Phone, href: "tel:+918935901010", label: "Call Us" },
+                  { icon: MessageCircle, href: "https://wa.me/918935901010", label: "Message" },
+                  { icon: MapPin, href: "https://maps.google.com/?q=The+Green+Valley+International+School+Bihta", label: "Locate Us" },
+                  { icon: Mail, href: "mailto:tgvisbihta@gmail.com", label: "Email Us" },
+                ].map((action, i) => (
+                  <motion.a
+                    key={i}
+                    href={action.href}
+                    target={action.icon === MapPin ? "_blank" : "_self"}
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    title={action.label}
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 text-white shadow-xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group"
+                  >
+                    <action.icon className="h-6 w-6" />
+                    {/* Tooltip */}
+                    <span className="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0d3b66] text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none">
+                      {action.label}
+                    </span>
+                  </motion.a>
+                ))}
               </motion.div>
             </motion.div>
 
@@ -298,9 +323,12 @@ export default function Home() {
       {/* ═══════════════════ GALLERY PREVIEW (ROLLER) ═══════════════════ */}
       <motion.section 
         style={{ scale: galleryScale }}
-        className="relative min-h-screen py-40 perspective-container bg-white/10 backdrop-blur-[80px] shadow-[0_-50px_100px_rgba(0,0,0,0.2)] z-40 border-t border-white/50"
+        className="relative min-h-screen py-40 perspective-container z-40"
       >
-        <div className="mx-auto max-w-[1400px] px-6">
+        <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
+          <motion.path d="M12 0 L12 100" stroke="#14b8a6" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
+        </motion.svg>
+        <div className="mx-auto max-w-[1400px] px-6 relative z-10">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -312,28 +340,48 @@ export default function Home() {
               <span className="text-sm font-black text-teal-600 uppercase tracking-[0.3em]">Campus Gallery</span>
               <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-[#0d3b66] tracking-tight">A Glimpse Into Our World</h2>
             </div>
-            <Link href="/gallery" className="group inline-flex items-center gap-3 rounded-full border-2 border-[#0d3b66] px-8 py-3 text-sm font-black text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all shrink-0 uppercase tracking-widest">
+            <Link href="/#glimpses" className="group inline-flex items-center gap-3 rounded-full border-2 border-[#0d3b66] px-8 py-3 text-sm font-black text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all shrink-0 uppercase tracking-widest">
               Full Gallery <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-            {GALLERY.map((img, i) => (
-              <motion.div 
-                key={i} 
-                variants={fadeUp} 
-                whileHover={{ scale: 1.02, rotateZ: i % 2 === 0 ? 1 : -1 }}
-                className="group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-teal-500/20 transition-all break-inside-avoid inline-block w-full"
+          <div className="relative">
+            <div className="overflow-hidden rounded-[2.5rem]" ref={emblaRef}>
+              <div className="flex touch-pan-y">
+                {GALLERY.map((img, i) => (
+                  <div key={i} className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_80%] lg:flex-[0_0_60%] pl-6">
+                    <motion.div
+                      initial="hidden" whileInView="visible" viewport={{ once: true }} variants={unfold}
+                      className="group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-teal-500/20 transition-all h-[400px] sm:h-[500px]"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img.src} alt={img.label} className="w-full h-full object-cover bg-slate-100 transition-transform duration-1000 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute bottom-10 left-10 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                        <p className="text-white text-3xl font-bold tracking-tight mb-2">{img.label}</p>
+                        <p className="text-white/80 text-sm max-w-sm">Experience the state-of-the-art facilities and vibrant campus life at The Green Valley International School.</p>
+                      </div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex justify-center gap-4 mt-12">
+              <button
+                onClick={scrollPrev}
+                className="w-14 h-14 rounded-full border-2 border-[#0d3b66]/20 flex items-center justify-center text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all backdrop-blur-md bg-white/30"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img.src} alt={img.label} className="w-full h-auto bg-slate-100 transition-transform duration-1000 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  <p className="text-white text-lg font-bold tracking-tight">{img.label}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                <ArrowLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={scrollNext}
+                className="w-14 h-14 rounded-full border-2 border-[#0d3b66]/20 flex items-center justify-center text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all backdrop-blur-md bg-white/30"
+              >
+                <ArrowRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
         </div>
       </motion.section>
 
@@ -341,9 +389,12 @@ export default function Home() {
       <motion.section 
         style={{ scale: contactScale }}
         id="contact" 
-        className="relative min-h-screen py-40 perspective-container bg-slate-50/30 backdrop-blur-[100px] shadow-[0_-50px_100px_rgba(0,0,0,0.25)] z-50 border-t border-white/60"
+        className="relative min-h-screen py-40 perspective-container z-50"
       >
-        <div className="mx-auto max-w-[1400px] px-6">
+        <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
+          <motion.path d="M12 0 L12 100" stroke="#0d3b66" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
+        </motion.svg>
+        <div className="mx-auto max-w-[1400px] px-6 relative z-10">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -353,7 +404,18 @@ export default function Home() {
           >
             <span className="text-sm font-black text-blue-600 uppercase tracking-[0.4em]">Get In Touch</span>
             <h2 className="mt-6 text-5xl md:text-7xl font-extrabold text-[#0d3b66] tracking-tighter">Connect <span className="text-teal-500">With Us</span></h2>
-            <p className="mt-8 text-slate-500 text-xl font-medium opacity-80 leading-relaxed">Reach out to our admissions team or visit our world-class campus in Bihta.</p>
+            <div className="mt-8 text-slate-500 text-xl font-medium opacity-80 leading-relaxed">
+              {"Reach out to our admissions team or visit our world-class campus in Bihta.".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: i * 0.02, duration: 0.1 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -464,7 +526,7 @@ export default function Home() {
       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 pointer-events-none">
         <div className="mx-auto max-w-[1400px] flex justify-center sm:justify-end gap-4 pointer-events-auto">
           <Link
-            href="/gallery"
+            href="/#glimpses"
             className="flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-6 py-3 text-sm font-bold text-[#0d3b66] shadow-2xl border border-white/50 hover:bg-white hover:scale-105 transition-all"
           >
             <span className="hidden sm:inline">View</span> Gallery
