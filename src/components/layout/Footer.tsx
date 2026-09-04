@@ -3,18 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock, Info, X, ExternalLink } from "lucide-react";
-import { useState } from "react";
 
 const FB_LINK = "https://www.facebook.com/people/The-Green-Valley-International-School-Bihta/100088041550841/";
 const IG_LINK = "https://www.instagram.com/tgvis.official";
 
 export default function Footer() {
-  const [devOpen, setDevOpen] = useState(false);
 
   return (
     <>
       <footer className="relative z-50 bg-[#0d3b66] text-white border-t border-white/10 shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-[1400px] px-6 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
               <div className="flex items-center gap-3 mb-5">
@@ -87,91 +85,19 @@ export default function Footer() {
             <p>© {new Date().getFullYear() || 2027} The Green Valley International School, Bihta. All rights reserved.</p>
             <div className="flex items-center gap-3">
               <span>Official Website of TGVIS</span>
-            <button
-              onClick={() => setDevOpen(true)}
+            <a
+              href="https://pawanwashudev.neubofy.in"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center gap-2 transition-all group active:scale-95"
             >
               <Info className="w-3.5 h-3.5 text-teal-400" />
               <span className="text-xs font-bold text-blue-200/60 group-hover:text-white transition-colors uppercase tracking-widest">About Developer</span>
-            </button>
+            </a>
             </div>
           </div>
         </div>
       </footer>
-
-      {/* Developer Info Modal */}
-      {devOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-6" onClick={() => setDevOpen(false)}>
-          <div
-            className="relative w-full max-w-sm rounded-3xl bg-white shadow-2xl p-8 animate-in fade-in zoom-in duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setDevOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
-            >
-              <X className="w-4 h-4 text-slate-500" />
-            </button>
-
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0d3b66] to-teal-600 mx-auto flex items-center justify-center mb-4 shadow-lg">
-                <span className="text-2xl font-black text-white">PW</span>
-              </div>
-              <h3 className="text-xl font-extrabold text-slate-900">Pawan Washudev</h3>
-              <p className="text-sm text-slate-500 mt-1">Full-Stack Developer</p>
-            </div>
-
-            <div className="space-y-3">
-              <a
-                href="https://github.com/pawanwashudev-official"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 transition-all group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#24292e] flex items-center justify-center text-white shrink-0">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.699-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.022A9.607 9.607 0 0112 6.82c.85.004 1.705.114 2.504.336 1.909-1.29 2.747-1.022 2.747-1.022.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-slate-800">Visit GitHub profile</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-              </a>
-
-              <a
-                href="mailto:pawanwashudev@gmail.com"
-                className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 transition-all group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-red-500 flex items-center justify-center text-white shrink-0">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-slate-800">Send an Email</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-              </a>
-
-              <a
-                href="https://pawanwashudev.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 hover:bg-slate-100 transition-all group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center text-white shrink-0">
-                  <ExternalLink className="w-5 h-5" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-bold text-slate-800">View Portfolio</p>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-              </a>
-            </div>
-
-            <p className="text-center text-xs text-slate-400 mt-6">
-              Designed & Developed with ❤️
-            </p>
-          </div>
-        </div>
-      )}
     </>
   );
 }

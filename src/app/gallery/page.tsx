@@ -18,12 +18,15 @@ const stagger = {
 const CATEGORIES = ["All", "Campus", "Classroom", "Labs", "Sports", "Transport"];
 
 const GALLERY = [
-  { src: "/gallery/school-front.jpg", cat: "Campus", label: "School Entrance" },
-  { src: "/gallery/campus-2.jpg", cat: "Campus", label: "Campus View" },
-  { src: "/gallery/students-1.jpg", cat: "Classroom", label: "Students Learning" },
-  { src: "/gallery/activity-1.jpg", cat: "Sports", label: "Annual Day Event" },
-  { src: "/gallery/transport-1.jpg", cat: "Transport", label: "School Bus Service" },
-  { src: "/featured.jpg", cat: "Campus", label: "School Building" },
+  { src: "/gallery/campus-hero-new.jpg", cat: "Campus", label: "School Building" },
+  { src: "/gallery/classroom-new.jpg", cat: "Classroom", label: "Classrooms" },
+  { src: "/gallery/science-lab-new.jpg", cat: "Labs", label: "Science Lab" },
+  { src: "/gallery/computer-lab-new.jpg", cat: "Labs", label: "Computer Lab" },
+  { src: "/gallery/library-new.jpg", cat: "Campus", label: "Library" },
+  { src: "/gallery/cultural-event-new.jpg", cat: "Campus", label: "School Programs" },
+  { src: "/gallery/tgvis-campus-life.jpg", cat: "Campus", label: "Campus Life" },
+  { src: "/gallery/sports-ground.jpg", cat: "Sports", label: "Playground & Sports" },
+  { src: "/gallery/tgvis-classroom.jpg", cat: "Classroom", label: "Junior Classroom" },
 ];
 
 export default function GalleryPage() {
@@ -41,7 +44,7 @@ export default function GalleryPage() {
           <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-teal-400/10 blur-[120px] animate-blob" />
           <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[120px] animate-blob animation-delay-2000" />
         </div>
-        <div className="mx-auto max-w-7xl px-6 text-center relative z-10">
+        <div className="mx-auto max-w-[1400px] px-6 text-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
@@ -70,7 +73,7 @@ export default function GalleryPage() {
 
       {/* Filter + Grid */}
       <section className="py-16">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1400px] px-6">
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-16">
             {CATEGORIES.map((cat) => (
@@ -93,7 +96,7 @@ export default function GalleryPage() {
             initial="hidden" 
             animate="visible" 
             variants={stagger} 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" 
+            className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8 space-y-8"
             key={activeCategory}
           >
             {filtered.map((img, i) => (
@@ -102,9 +105,10 @@ export default function GalleryPage() {
                 variants={fadeUp}
                 layout
                 whileHover={{ y: -12, rotateX: 2, rotateY: 2 }}
-                className="group relative h-80 rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-teal-500/20 transition-all duration-500 liquid-glass border border-white/40"
+                className="group relative rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-teal-500/20 transition-all duration-500 liquid-glass border border-white/40 break-inside-avoid inline-block w-full"
               >
-                <Image src={img.src} alt={img.label} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img.src} alt={img.label} className="w-full h-auto bg-slate-100 transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/90 via-[#0d3b66]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-8 left-8 right-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                   <p className="text-white font-black text-lg tracking-tight">{img.label}</p>
