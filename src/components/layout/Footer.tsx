@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import TGVISLogo from "@/components/TGVISLogo";
 import { MapPin, Phone, Mail, Clock, Info, X, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
@@ -19,7 +19,7 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <div className="relative h-12 w-12 rounded-full overflow-hidden bg-white p-1 shadow-sm">
-                  <Image src="/logo.png" alt="TGVIS" fill className="object-contain" />
+                  <TGVISLogo className="w-10 h-10 object-contain" />
                 </div>
                 <div>
                   <p className="font-bold text-lg">TGVIS</p>

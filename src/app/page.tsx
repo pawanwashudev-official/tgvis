@@ -28,15 +28,15 @@ const stagger: Variants = {
 };
 const foldInLeft: Variants = {
   hidden: { opacity: 0, rotateY: -30, x: -50, filter: "blur(10px)" },
-  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as any } },
+  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as unknown } },
 };
 const foldInRight: Variants = {
   hidden: { opacity: 0, rotateY: 30, x: 50, filter: "blur(10px)" },
-  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as any } },
+  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as unknown } },
 };
 const unfold: Variants = {
   hidden: { opacity: 0, rotateX: 20, scale: 0.95, y: 40 },
-  visible: { opacity: 1, rotateX: 0, scale: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as any } },
+  visible: { opacity: 1, rotateX: 0, scale: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as unknown } },
 };
 
 /* ─── local gallery images ─── */
@@ -148,15 +148,7 @@ export default function Home() {
             >
               <div className="relative w-[400px] h-[400px] rounded-full liquid-glass flex items-center justify-center p-12 glass-border-glow shadow-[0_0_50px_rgba(45,212,191,0.2)]">
                 <div className="relative w-full h-full animate-float flex items-center justify-center">
-                  <Image 
-                    src="/logo.png" 
-                    alt="TGVIS Official Logo" 
-                    fill 
-                    className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" 
-                    priority
-                    quality={90}
-                    sizes="(max-width: 1024px) 100vw, 400px"
-                  />
+                  <Image src="/logo.png" alt="TGVIS Official Logo" fill className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-2" priority quality={90} sizes="(max-width: 1024px) 100vw, 400px" />
                 </div>
               </div>
             </motion.div>

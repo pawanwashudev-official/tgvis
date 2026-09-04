@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
+import TGVISLogo from "@/components/TGVISLogo";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -34,7 +34,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative h-12 w-12 shrink-0 rounded-full overflow-hidden border-2 border-white/30 shadow-md group-hover:shadow-lg transition-shadow bg-white">
-            <Image src="/logo.png" alt="TGVIS Logo" fill className="object-contain p-1" priority />
+            <TGVISLogo className="w-10 h-10 object-contain p-1" />
           </div>
           <div className="hidden sm:block leading-tight">
             <p className="text-sm font-extrabold tracking-tight text-[#0d3b66]">The Green Valley</p>
