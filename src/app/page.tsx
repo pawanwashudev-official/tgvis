@@ -96,10 +96,10 @@ export default function Home() {
           className="absolute inset-0 will-change-transform"
         >
           <Image
-            src="/featured.jpg"
-            alt="Campus"
+            src="/gallery/campus-hero-new.jpg"
+            alt="The Green Valley International School Building"
             fill
-            className="object-contain bg-slate-100"
+            className="object-cover bg-slate-100"
             priority
             quality={85}
             sizes="100vw"
@@ -131,13 +131,30 @@ export default function Home() {
                 A prestigious CBSE-affiliated school in Bihta, Patna — where every child discovers their potential through world-class education and a nurturing environment.
               </motion.p>
 
-              <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
-                <Link href="/admissions" className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-[#0d3b66] shadow-xl shadow-black/20 hover:bg-teal-50 transition-all hover:scale-105">
-                  Start Admission <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link href="/gallery" className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-md px-8 py-4 text-sm font-semibold text-white hover:bg-white/20 transition-all">
-                  Explore Campus
-                </Link>
+              <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-6 items-center">
+                {[
+                  { icon: Phone, href: "tel:+918935901010", label: "Call Us" },
+                  { icon: MessageCircle, href: "https://wa.me/918935901010", label: "Message" },
+                  { icon: MapPin, href: "https://maps.google.com/?q=The+Green+Valley+International+School+Bihta", label: "Locate Us" },
+                  { icon: Mail, href: "mailto:tgvisbihta@gmail.com", label: "Email Us" },
+                ].map((action, i) => (
+                  <motion.a
+                    key={i}
+                    href={action.href}
+                    target={action.icon === MapPin ? "_blank" : "_self"}
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    title={action.label}
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 text-white shadow-xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group"
+                  >
+                    <action.icon className="h-6 w-6" />
+                    {/* Tooltip */}
+                    <span className="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0d3b66] text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none">
+                      {action.label}
+                    </span>
+                  </motion.a>
+                ))}
               </motion.div>
             </motion.div>
 
@@ -298,9 +315,12 @@ export default function Home() {
       {/* ═══════════════════ GALLERY PREVIEW (ROLLER) ═══════════════════ */}
       <motion.section 
         style={{ scale: galleryScale }}
-        className="relative min-h-screen py-40 perspective-container bg-white/10 backdrop-blur-[80px] shadow-[0_-50px_100px_rgba(0,0,0,0.2)] z-40 border-t border-white/50"
+        className="relative min-h-screen py-40 perspective-container z-40"
       >
-        <div className="mx-auto max-w-[1400px] px-6">
+        <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
+          <motion.path d="M12 0 L12 100" stroke="#14b8a6" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
+        </motion.svg>
+        <div className="mx-auto max-w-[1400px] px-6 relative z-10">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -341,9 +361,12 @@ export default function Home() {
       <motion.section 
         style={{ scale: contactScale }}
         id="contact" 
-        className="relative min-h-screen py-40 perspective-container bg-slate-50/30 backdrop-blur-[100px] shadow-[0_-50px_100px_rgba(0,0,0,0.25)] z-50 border-t border-white/60"
+        className="relative min-h-screen py-40 perspective-container z-50"
       >
-        <div className="mx-auto max-w-[1400px] px-6">
+        <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
+          <motion.path d="M12 0 L12 100" stroke="#0d3b66" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
+        </motion.svg>
+        <div className="mx-auto max-w-[1400px] px-6 relative z-10">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -353,7 +376,18 @@ export default function Home() {
           >
             <span className="text-sm font-black text-blue-600 uppercase tracking-[0.4em]">Get In Touch</span>
             <h2 className="mt-6 text-5xl md:text-7xl font-extrabold text-[#0d3b66] tracking-tighter">Connect <span className="text-teal-500">With Us</span></h2>
-            <p className="mt-8 text-slate-500 text-xl font-medium opacity-80 leading-relaxed">Reach out to our admissions team or visit our world-class campus in Bihta.</p>
+            <div className="mt-8 text-slate-500 text-xl font-medium opacity-80 leading-relaxed">
+              {"Reach out to our admissions team or visit our world-class campus in Bihta.".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: i * 0.02, duration: 0.1 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
