@@ -11,11 +11,12 @@ import Link from "next/link";
 import {
   ChevronRight, BookOpen, Users, Award, Beaker, Trophy,
   Laptop, Palette, Bus, GraduationCap, Phone, Star,
-  Target, Heart, MapPin, Mail, Clock, MessageCircle, Send
+  Target, Heart, MapPin, Mail, Clock, MessageCircle, Send, ArrowRight, ArrowLeft
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 /* ─── animation helpers ─── */
 const fadeUp: Variants = {
@@ -41,18 +42,25 @@ const unfold: Variants = {
 
 /* ─── local gallery images ─── */
 const GALLERY = [
-  { src: "/gallery/campus-hero-new.jpg", label: "School Building" },
+  { src: "/gallery/trip.jpg", label: "School Trip" },
+  { src: "/gallery/science-exibt.jpg", label: "Science Exhibition" },
   { src: "/gallery/classroom-new.jpg", label: "Classrooms" },
-  { src: "/gallery/science-lab-new.jpg", label: "Science Lab" },
-  { src: "/gallery/computer-lab-new.jpg", label: "Computer Lab" },
-  { src: "/gallery/library-new.jpg", label: "Library" },
-  { src: "/gallery/cultural-event-new.jpg", label: "School Programs" },
-  { src: "/gallery/tgvis-campus-life.jpg", label: "Campus Life" },
-  { src: "/gallery/sports-ground.jpg", label: "Playground & Sports" },
-  { src: "/gallery/tgvis-classroom.jpg", label: "Junior Classroom" },
+  { src: "/gallery/lab-new.webp", label: "Laboratories" },
+  { src: "/gallery/ceremony.jpg", label: "Ceremony" },
+  { src: "/gallery/classroom-8B.jpeg", label: "Junior Classroom" },
 ];
 
 export default function Home() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center", skipSnaps: false });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -96,7 +104,7 @@ export default function Home() {
           className="absolute inset-0 will-change-transform"
         >
           <Image
-            src="/gallery/campus-hero-new.jpg"
+            src="/gallery/hero.png"
             alt="The Green Valley International School Building"
             fill
             className="object-cover bg-slate-100"
@@ -337,23 +345,43 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-            {GALLERY.map((img, i) => (
-              <motion.div 
-                key={i} 
-                variants={fadeUp} 
-                whileHover={{ scale: 1.02, rotateZ: i % 2 === 0 ? 1 : -1 }}
-                className="group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-teal-500/20 transition-all break-inside-avoid inline-block w-full"
+          <div className="relative">
+            <div className="overflow-hidden rounded-[2.5rem]" ref={emblaRef}>
+              <div className="flex touch-pan-y">
+                {GALLERY.map((img, i) => (
+                  <div key={i} className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_80%] lg:flex-[0_0_60%] pl-6">
+                    <motion.div
+                      initial="hidden" whileInView="visible" viewport={{ once: true }} variants={unfold}
+                      className="group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-teal-500/20 transition-all h-[400px] sm:h-[500px]"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img.src} alt={img.label} className="w-full h-full object-cover bg-slate-100 transition-transform duration-1000 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute bottom-10 left-10 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                        <p className="text-white text-3xl font-bold tracking-tight mb-2">{img.label}</p>
+                        <p className="text-white/80 text-sm max-w-sm">Experience the state-of-the-art facilities and vibrant campus life at The Green Valley International School.</p>
+                      </div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex justify-center gap-4 mt-12">
+              <button
+                onClick={scrollPrev}
+                className="w-14 h-14 rounded-full border-2 border-[#0d3b66]/20 flex items-center justify-center text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all backdrop-blur-md bg-white/30"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img.src} alt={img.label} className="w-full h-auto bg-slate-100 transition-transform duration-1000 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  <p className="text-white text-lg font-bold tracking-tight">{img.label}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                <ArrowLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={scrollNext}
+                className="w-14 h-14 rounded-full border-2 border-[#0d3b66]/20 flex items-center justify-center text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all backdrop-blur-md bg-white/30"
+              >
+                <ArrowRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
         </div>
       </motion.section>
 

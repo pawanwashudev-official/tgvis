@@ -41,7 +41,7 @@ export default function Footer() {
               <h4 className="text-sm font-bold uppercase tracking-wider text-teal-300 mb-6">Quick Links</h4>
               <ul className="space-y-3 text-sm text-blue-200/60">
                 <li><Link href="/#about" className="hover:text-white transition-colors">Our Story</Link></li>
-                <li><Link href="/gallery" className="hover:text-white transition-colors">Photo Gallery</Link></li>
+                <li><Link href="/#glimpses" className="hover:text-white transition-colors">Photo Gallery</Link></li>
                 <li><Link href="/admissions" className="hover:text-white transition-colors">Admissions 2026-27</Link></li>
                 <li><Link href="/#contact" className="hover:text-white transition-colors">Contact Support</Link></li>
               </ul>
