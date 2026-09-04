@@ -41,12 +41,12 @@ const unfold: Variants = {
 
 /* ─── local gallery images ─── */
 const GALLERY = [
-  { src: "/gallery/school-front.jpg", label: "School Entrance" },
-  { src: "/gallery/campus-2.jpg", label: "Campus View" },
-  { src: "/gallery/students-1.jpg", label: "Student Activities" },
-  { src: "/gallery/transport-1.jpg", label: "School Transport" },
-  { src: "/gallery/activity-1.jpg", label: "Annual Event" },
-  { src: "/featured.jpg", label: "School Building" },
+  { src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", label: "School Entrance" },
+  { src: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", label: "Campus View" },
+  { src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", label: "Student Activities" },
+  { src: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", label: "School Transport" },
+  { src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", label: "Classrooms" },
+  { src: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", label: "School Building" },
 ];
 
 export default function Home() {
@@ -221,17 +221,17 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-8 p-6 rounded-[4rem] liquid-glass-premium glass-border-glow shadow-2xl">
               <div className="space-y-8">
                 <div className="relative h-64 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/students-1.jpg" alt="Students" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
+                  <Image src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
                 <div className="relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/campus-2.jpg" alt="Campus" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
+                  <Image src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Campus" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
               </div>
               <div className="space-y-8 pt-16">
                 <div className="relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/activity-1.jpg" alt="Activities" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
+                  <Image src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Activities" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
                 <div className="relative h-64 rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#0d3b66] to-teal-900 flex items-center justify-center p-10 text-center glass-border-glow group">
@@ -315,6 +315,62 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </motion.section>
+
+      {/* ═══════════════════ ACADEMICS & FACULTY ═══════════════════ */}
+      <motion.section
+        className="relative min-h-screen py-40 bg-white perspective-container z-35 border-t border-slate-200"
+      >
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={foldInLeft}
+            className="text-center max-w-3xl mx-auto mb-20"
+          >
+            <span className="text-sm font-black text-teal-600 uppercase tracking-[0.3em]">Academics & Faculty</span>
+            <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-[#0d3b66] tracking-tight">Our Pillars of Excellence</h2>
+            <p className="mt-6 text-slate-500 text-lg font-medium opacity-80">Nurturing young minds with a robust CBSE curriculum and world-class educators.</p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="space-y-10"
+            >
+              <div className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 shadow-lg">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500 text-white shadow-lg mb-6"><BookOpen className="h-6 w-6" /></div>
+                <h3 className="text-2xl font-bold text-[#0d3b66] mb-4">CBSE Curriculum</h3>
+                <p className="text-slate-600 leading-relaxed font-medium">Our academic framework is strictly aligned with the Central Board of Secondary Education (CBSE), ensuring a standardized, nationally recognized education that prepares students for all future competitive endeavors.</p>
+              </div>
+              <div className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 shadow-lg">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg mb-6"><Users className="h-6 w-6" /></div>
+                <h3 className="text-2xl font-bold text-[#0d3b66] mb-4">Expert Faculty</h3>
+                <p className="text-slate-600 leading-relaxed font-medium">We pride ourselves on our highly qualified and experienced educators who are passionate about teaching. They act as mentors, guiding students through their academic and personal growth journey.</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={foldInRight}
+              className="relative h-[600px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white"
+            >
+              <Image src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Expert Faculty" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/90 to-transparent flex items-end p-10">
+                <div>
+                  <h4 className="text-3xl font-black text-white mb-2">Dedicated Teachers</h4>
+                  <p className="text-blue-100 font-medium">Shaping the leaders of tomorrow.</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
