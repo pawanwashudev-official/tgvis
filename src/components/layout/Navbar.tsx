@@ -16,12 +16,11 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    // Keep the listener if we want to add scrolling effects later, or just remove if entirely unused.
+    // Wait, the header itself doesn't use `scrolled` state anymore in the classNames based on previous modifications.
+    // I'll just remove the unused variable completely.
   }, []);
 
   return (

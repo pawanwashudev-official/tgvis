@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { Phone, Mail, FileText, ChevronRight, CheckCircle, Clock, Users } from "lucide-react";
+import "next/link";
+import { Phone, Mail, FileText, CheckCircle, Clock, Users } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 

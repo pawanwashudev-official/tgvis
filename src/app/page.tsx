@@ -9,9 +9,9 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ChevronRight, BookOpen, Users, Award, Beaker, Trophy,
+  ChevronRight, Beaker, Trophy,
   Laptop, Palette, Bus, GraduationCap, Phone, Star,
-  Target, Heart, MapPin, Mail, Clock, MessageCircle, Send
+  Target, Heart, MapPin, Mail, Clock, MessageCircle
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -28,15 +28,15 @@ const stagger: Variants = {
 };
 const foldInLeft: Variants = {
   hidden: { opacity: 0, rotateY: -30, x: -50, filter: "blur(10px)" },
-  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as unknown } },
+  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
 };
 const foldInRight: Variants = {
   hidden: { opacity: 0, rotateY: 30, x: 50, filter: "blur(10px)" },
-  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as unknown } },
+  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
 };
 const unfold: Variants = {
   hidden: { opacity: 0, rotateX: 20, scale: 0.95, y: 40 },
-  visible: { opacity: 1, rotateX: 0, scale: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as unknown } },
+  visible: { opacity: 1, rotateX: 0, scale: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
 };
 
 /* ─── local gallery images ─── */
