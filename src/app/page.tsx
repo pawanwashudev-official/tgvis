@@ -107,7 +107,7 @@ export default function Home() {
             src="/gallery/hero.png"
             alt="The Green Valley International School Building"
             fill
-            className="object-cover bg-slate-100"
+            className="object-cover object-right bg-slate-100"
             priority
             quality={85}
             sizes="100vw"
