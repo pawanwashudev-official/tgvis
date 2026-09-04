@@ -28,25 +28,28 @@ const stagger: Variants = {
 };
 const foldInLeft: Variants = {
   hidden: { opacity: 0, rotateY: -30, x: -50, filter: "blur(10px)" },
-  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as any } },
+  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1]  } },
 };
 const foldInRight: Variants = {
   hidden: { opacity: 0, rotateY: 30, x: 50, filter: "blur(10px)" },
-  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as any } },
+  visible: { opacity: 1, rotateY: 0, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1]  } },
 };
 const unfold: Variants = {
   hidden: { opacity: 0, rotateX: 20, scale: 0.95, y: 40 },
-  visible: { opacity: 1, rotateX: 0, scale: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as any } },
+  visible: { opacity: 1, rotateX: 0, scale: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1]  } },
 };
 
 /* ─── local gallery images ─── */
 const GALLERY = [
-  { src: "/gallery/school-front.jpg", label: "School Entrance" },
-  { src: "/gallery/campus-2.jpg", label: "Campus View" },
-  { src: "/gallery/students-1.jpg", label: "Student Activities" },
-  { src: "/gallery/transport-1.jpg", label: "School Transport" },
-  { src: "/gallery/activity-1.jpg", label: "Annual Event" },
-  { src: "/featured.jpg", label: "School Building" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=School+Building", label: "School Building" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Classrooms", label: "Classrooms" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Labs", label: "Science & Computer Labs" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Assembly", label: "Morning Assembly" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Programs", label: "School Programs" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=PTM", label: "Parent Teacher Meeting" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Result+Celebrations", label: "Result Celebrations" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Experiments", label: "Experiments" },
+  { src: "https://placehold.co/600x400/e2e8f0/475569?text=Playground", label: "Playground & Sports" },
 ];
 
 export default function Home() {
@@ -96,7 +99,7 @@ export default function Home() {
             src="/featured.jpg"
             alt="Campus"
             fill
-            className="object-cover"
+            className="object-contain bg-slate-100"
             priority
             quality={85}
             sizes="100vw"
@@ -105,7 +108,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66] via-transparent to-transparent" />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-7xl px-6 w-full">
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-[1400px] px-6 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-24">
             <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-2xl">
               <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-5 py-2 mb-8">
@@ -177,7 +180,7 @@ export default function Home() {
 
       {/* ═══════════════════ STATS (ROLL-OVER) ═══════════════════ */}
       <motion.section className="relative z-10 -mt-32 perspective-container">
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-[1400px] px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -210,7 +213,7 @@ export default function Home() {
         id="about" 
         className="relative min-h-screen py-32 lg:py-48 perspective-container bg-white/20 backdrop-blur-3xl shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/30 will-change-transform"
       >
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -221,17 +224,17 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-8 p-6 rounded-[4rem] liquid-glass-premium glass-border-glow shadow-2xl">
               <div className="space-y-8">
                 <div className="relative h-64 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/students-1.jpg" alt="Students" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
+                  <Image src="/gallery/students-1.jpg" alt="Students" fill className="object-contain bg-slate-100 group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
                 <div className="relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/campus-2.jpg" alt="Campus" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
+                  <Image src="/gallery/campus-2.jpg" alt="Campus" fill className="object-contain bg-slate-100 group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
               </div>
               <div className="space-y-8 pt-16">
                 <div className="relative h-80 rounded-[2.5rem] overflow-hidden shadow-2xl group border border-white/40">
-                  <Image src="/gallery/activity-1.jpg" alt="Activities" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
+                  <Image src="/gallery/activity-1.jpg" alt="Activities" fill className="object-contain bg-slate-100 group-hover:scale-110 transition-transform duration-1000" sizes="(max-width: 768px) 100vw, 50vw" quality={80} />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/80 via-[#0d3b66]/20 to-transparent" />
                 </div>
                 <div className="relative h-64 rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#0d3b66] to-teal-900 flex items-center justify-center p-10 text-center glass-border-glow group">
@@ -250,23 +253,23 @@ export default function Home() {
                 Crafting <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">Greatness</span> Since Day One
               </motion.h2>
               <motion.p variants={fadeUp} className="mt-10 text-slate-600 leading-relaxed text-xl font-medium opacity-90 max-w-xl">
-                The Green Valley International School stands as a beacon of academic excellence in Bihta, Patna. We believe every child is a unique world waiting to be explored.
+                The Green Valley International School is recognized as the best CBSE school in Bihta, Patna. We offer a world-class educational experience combining modern pedagogy, state-of-the-art facilities, and deep-rooted cultural values to ensure that every student thrives.
               </motion.p>
               
               <div className="mt-14 space-y-8">
                 <div className="p-8 rounded-[2.5rem] liquid-glass glass-border-glow shadow-xl hover:translate-x-4 transition-transform duration-500">
                   <h3 className="font-black text-[#0d3b66] text-xl flex items-center gap-4 uppercase tracking-wider">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500 text-white shadow-lg"><Target className="h-6 w-6" /></div>
-                    Our Mission
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500 text-white shadow-lg"><Star className="h-6 w-6" /></div>
+                    Exceptional Educators
                   </h3>
-                  <p className="mt-4 text-slate-600 leading-relaxed font-medium opacity-80">To provide a holistic educational experience that nurtures intellectual curiosity and builds strong, ethical character.</p>
+                  <p className="mt-4 text-slate-600 leading-relaxed font-medium opacity-80">Our teachers are highly qualified, passionate, and dedicated to student success. They act as mentors who guide, inspire, and foster a love for lifelong learning in every child.</p>
                 </div>
                 <div className="p-8 rounded-[2.5rem] liquid-glass glass-border-glow shadow-xl hover:translate-x-4 transition-transform duration-500">
                   <h3 className="font-black text-[#0d3b66] text-xl flex items-center gap-4 uppercase tracking-wider">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg"><Heart className="h-6 w-6" /></div>
-                    Our Vision
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg"><Target className="h-6 w-6" /></div>
+                    Holistic Development
                   </h3>
-                  <p className="mt-4 text-slate-600 leading-relaxed font-medium opacity-80">To be the most progressive educational institution in Bihar, producing responsible citizens who lead with empathy.</p>
+                  <p className="mt-4 text-slate-600 leading-relaxed font-medium opacity-80">We go beyond textbooks. We offer comprehensive programs including sports, arts, experiments, and regular PTMs (Parent-Teacher Meetings) for an all-round development approach.</p>
                 </div>
               </div>
             </div>
@@ -279,7 +282,7 @@ export default function Home() {
         style={{ scale: facilitiesScale, rotateX: facilitiesRotateX }}
         className="relative min-h-screen py-40 bg-slate-50/20 backdrop-blur-[60px] perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/40 will-change-transform"
       >
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -323,7 +326,7 @@ export default function Home() {
         style={{ scale: galleryScale }}
         className="relative min-h-screen py-40 perspective-container bg-white/10 backdrop-blur-[80px] shadow-[0_-50px_100px_rgba(0,0,0,0.2)] z-40 border-t border-white/50"
       >
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -348,7 +351,7 @@ export default function Home() {
                 whileHover={{ scale: 1.02, rotateZ: i % 2 === 0 ? 1 : -1 }}
                 className={`group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-teal-500/20 transition-all ${i === 0 ? "col-span-2 row-span-2 h-[400px] md:h-[600px]" : "h-56 md:h-72"}`}
               >
-                <Image src={img.src} alt={img.label} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" quality={75} />
+                <Image src={img.src} alt={img.label} fill className="object-contain bg-slate-100 transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" quality={75} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                   <p className="text-white text-lg font-bold tracking-tight">{img.label}</p>
@@ -365,7 +368,7 @@ export default function Home() {
         id="contact" 
         className="relative min-h-screen py-40 perspective-container bg-slate-50/30 backdrop-blur-[100px] shadow-[0_-50px_100px_rgba(0,0,0,0.25)] z-50 border-t border-white/60"
       >
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -447,7 +450,7 @@ export default function Home() {
           <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal-400/10 blur-[150px] animate-blob" />
           <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-400/10 blur-[150px] animate-blob animation-delay-2000" />
         </div>
-        <div className="mx-auto max-w-5xl px-6 relative z-10 text-center">
+        <div className="mx-auto max-w-[1400px] px-6 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
             whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
@@ -481,6 +484,24 @@ export default function Home() {
       </motion.section>
 
       <Footer />
+
+      {/* Sticky Bottom Navigation CTA for mobile & desktop */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 pointer-events-none">
+        <div className="mx-auto max-w-[1400px] flex justify-center sm:justify-end gap-4 pointer-events-auto">
+          <Link
+            href="/gallery"
+            className="flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-6 py-3 text-sm font-bold text-[#0d3b66] shadow-2xl border border-white/50 hover:bg-white hover:scale-105 transition-all"
+          >
+            <span className="hidden sm:inline">View</span> Gallery
+          </Link>
+          <Link
+            href="/admissions"
+            className="flex items-center gap-2 rounded-full bg-teal-500/90 backdrop-blur-md px-6 py-3 text-sm font-bold text-white shadow-2xl hover:bg-teal-500 hover:scale-105 transition-all"
+          >
+            Apply Now <ChevronRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

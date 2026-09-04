@@ -29,9 +29,9 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl liquid-glass rounded-3xl py-3 px-4 md:px-8`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1400px] liquid-glass rounded-3xl py-3 px-4 md:px-8`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative h-12 w-12 shrink-0 rounded-full overflow-hidden border-2 border-white/30 shadow-md group-hover:shadow-lg transition-shadow bg-white">
             <Image src="/logo.png" alt="TGVIS Logo" fill className="object-contain p-1" priority />

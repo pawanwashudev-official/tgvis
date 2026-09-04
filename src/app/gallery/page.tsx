@@ -104,7 +104,7 @@ export default function GalleryPage() {
                 whileHover={{ y: -12, rotateX: 2, rotateY: 2 }}
                 className="group relative h-80 rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-teal-500/20 transition-all duration-500 liquid-glass border border-white/40"
               >
-                <Image src={img.src} alt={img.label} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+                <Image src={img.src} alt={img.label} fill className="object-contain bg-slate-100 transition-transform duration-1000 group-hover:scale-110" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/90 via-[#0d3b66]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-8 left-8 right-8 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                   <p className="text-white font-black text-lg tracking-tight">{img.label}</p>
