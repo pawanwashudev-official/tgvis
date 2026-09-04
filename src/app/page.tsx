@@ -340,7 +340,7 @@ export default function Home() {
               <span className="text-sm font-black text-teal-600 uppercase tracking-[0.3em]">Campus Gallery</span>
               <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-[#0d3b66] tracking-tight">A Glimpse Into Our World</h2>
             </div>
-            <Link href="/gallery" className="group inline-flex items-center gap-3 rounded-full border-2 border-[#0d3b66] px-8 py-3 text-sm font-black text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all shrink-0 uppercase tracking-widest">
+            <Link href="/#glimpses" className="group inline-flex items-center gap-3 rounded-full border-2 border-[#0d3b66] px-8 py-3 text-sm font-black text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all shrink-0 uppercase tracking-widest">
               Full Gallery <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -526,7 +526,7 @@ export default function Home() {
       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 pointer-events-none">
         <div className="mx-auto max-w-[1400px] flex justify-center sm:justify-end gap-4 pointer-events-auto">
           <Link
-            href="/gallery"
+            href="/#glimpses"
             className="flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-6 py-3 text-sm font-bold text-[#0d3b66] shadow-2xl border border-white/50 hover:bg-white hover:scale-105 transition-all"
           >
             <span className="hidden sm:inline">View</span> Gallery
