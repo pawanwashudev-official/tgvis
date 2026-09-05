@@ -106,19 +106,18 @@ export default function Home() {
             src="/gallery/hero.png"
             alt="The Green Valley International School Building"
             fill
-            className="object-cover object-left bg-transparent"
+            className="object-cover object-left bg-transparent opacity-20"
             priority
             quality={85}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/30 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/10 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-transparent" />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-[1400px] px-6 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-24">
             <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-2xl">
-              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-5 py-2 mb-8">
+              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-5 py-2 mb-8">
                 <Star className="h-4 w-4 text-amber-400 fill-amber-400" />
                 <span className="text-sm font-semibold text-white/90">CBSE Affiliated &bull; Bihta, Patna</span>
               </motion.div>
@@ -159,12 +158,15 @@ export default function Home() {
                     }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.15 }}
                     title={action.label}
-                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-xl border-2 text-white shadow-2xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group z-20"
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/5 backdrop-blur-xl border-2 text-white shadow-2xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group z-20"
                   >
                     <action.icon className="h-6 w-6" />
-                    {/* Tooltip */}
-                    <span className="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0d3b66] text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none">
-                      {action.label}
+                    {/* Vertical Highlight / Tooltip */}
+                    <span className="absolute -bottom-16 opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300 flex flex-col items-center pointer-events-none">
+                      <div className="w-1 h-3 bg-teal-400 mb-1 rounded-full shadow-[0_0_8px_#2dd4bf]" />
+                      <span className="bg-[#0d3b66]/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-xl border border-white/20 uppercase tracking-wider">
+                        {action.label}
+                      </span>
                     </span>
                   </motion.a>
                 ))}
@@ -392,10 +394,10 @@ export default function Home() {
       </motion.section>
 
       {/* ═══════════════════ ADMISSIONS CTA ═══════════════════ */}
-      <motion.section className="py-48 bg-gradient-to-br from-[#0d3b66]/80 via-[#0f4c75]/80 to-[#1a6b6a]/80 backdrop-blur-3xl relative overflow-hidden perspective-container border-t border-white/10">
+      <motion.section className="py-48 bg-transparent backdrop-blur-3xl relative overflow-hidden perspective-container border-t border-white/10">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal-400/10 blur-[150px] animate-blob" />
-          <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-400/10 blur-[150px] animate-blob animation-delay-2000" />
+          <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal-400/5 blur-[150px] animate-blob" />
+          <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-400/5 blur-[150px] animate-blob animation-delay-2000" />
         </div>
         <div className="mx-auto max-w-[1400px] px-6 relative z-10 text-center">
           <motion.div
@@ -403,9 +405,9 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: "circOut" }}
-            className="rounded-[4rem] liquid-glass-dark p-16 md:p-24 glass-border-glow shadow-[0_0_100px_rgba(45,212,191,0.1)]"
+            className="rounded-[4rem] liquid-glass-dark p-16 md:p-24 glass-border-glow shadow-[0_0_100px_rgba(45,212,191,0.3)]"
           >
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2 mb-10">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-6 py-2 mb-10">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-teal-400" />
@@ -422,7 +424,7 @@ export default function Home() {
               <Link href="/admissions" className="group inline-flex items-center gap-3 rounded-full bg-white px-10 py-5 text-sm font-black text-[#0d3b66] shadow-2xl hover:bg-teal-50 transition-all hover:scale-110 active:scale-95 uppercase tracking-widest">
                 Apply Now <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
-              <a href="tel:+918935901010" className="inline-flex items-center gap-3 rounded-full border-2 border-white/30 bg-white/10 px-10 py-5 text-sm font-bold text-white hover:bg-white/20 transition-all group uppercase tracking-widest">
+              <a href="tel:+918935901010" className="inline-flex items-center gap-3 rounded-full border-2 border-white/30 bg-white/5 px-10 py-5 text-sm font-bold text-white hover:bg-white/10 transition-all group uppercase tracking-widest">
                 <Phone className="h-5 w-5" /> Call Hotline
               </a>
             </motion.div>

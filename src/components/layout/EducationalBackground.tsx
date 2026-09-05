@@ -18,7 +18,7 @@ function MathTorus() {
   return (
     <mesh ref={meshRef} position={[-4, 2, -5]}>
       <torusKnotGeometry args={[1.5, 0.4, 100, 16]} />
-      <meshStandardMaterial color="#0d3b66" wireframe opacity={0.2} transparent />
+      <meshStandardMaterial color="#0d3b66" wireframe opacity={0.4} transparent />
     </mesh>
   );
 }
@@ -38,13 +38,13 @@ function Atom() {
     <group ref={groupRef} position={[5, -3, -8]}>
       <mesh>
         <sphereGeometry args={[0.5, 32, 32]} />
-        <meshStandardMaterial color="#14b8a6" opacity={0.4} transparent />
+        <meshStandardMaterial color="#14b8a6" opacity={0.6} transparent />
       </mesh>
       {/* Electron orbits */}
       {[0, 1, 2].map((i) => (
         <mesh key={i} rotation={[i * Math.PI / 3, i * Math.PI / 3, 0]}>
           <torusGeometry args={[2, 0.05, 16, 100]} />
-          <meshBasicMaterial color="#14b8a6" opacity={0.3} transparent />
+          <meshBasicMaterial color="#14b8a6" opacity={0.5} transparent />
         </mesh>
       ))}
     </group>
@@ -78,16 +78,16 @@ function DNA() {
           <group key={i}>
             <mesh position={[x1, y, z1]}>
               <sphereGeometry args={[0.2, 16, 16]} />
-              <meshStandardMaterial color="#0d3b66" opacity={0.5} transparent />
+              <meshStandardMaterial color="#0d3b66" opacity={0.7} transparent />
             </mesh>
             <mesh position={[x2, y, z2]}>
               <sphereGeometry args={[0.2, 16, 16]} />
-              <meshStandardMaterial color="#14b8a6" opacity={0.5} transparent />
+              <meshStandardMaterial color="#14b8a6" opacity={0.7} transparent />
             </mesh>
             {/* Connection line */}
             <mesh position={[0, y, 0]} rotation={[0, -angle, Math.PI / 2]}>
               <cylinderGeometry args={[0.05, 0.05, 3, 8]} />
-              <meshStandardMaterial color="#ffffff" opacity={0.2} transparent />
+              <meshStandardMaterial color="#ffffff" opacity={0.4} transparent />
             </mesh>
           </group>
         );
@@ -110,7 +110,7 @@ function FloatingGeometry() {
   return (
     <mesh ref={meshRef} position={[-6, -4, -10]}>
       <icosahedronGeometry args={[2, 0]} />
-      <meshStandardMaterial color="#38bdf8" wireframe opacity={0.15} transparent />
+      <meshStandardMaterial color="#38bdf8" wireframe opacity={0.3} transparent />
     </mesh>
   );
 }
@@ -137,8 +137,8 @@ export default function EducationalBackground() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none w-full h-full">
       <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
+        <ambientLight intensity={1.5} />
+        <directionalLight position={[10, 10, 5]} intensity={2} />
         <SceneMouseReaction />
         <MathTorus />
         <Atom />
