@@ -97,7 +97,7 @@ export default function Home() {
       <Navbar />
 
       {/* ═══════════════════ HERO (BASE LAYER) ═══════════════════ */}
-      <motion.section id="contact" className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0 will-change-transform">
+      <motion.section id="contact" className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0 will-change-transform scroll-mt-24">
         <motion.div 
           style={{ scale: heroScale, rotateX: heroRotateX, opacity: heroOpacity, y: contentY }} 
           className="absolute inset-0 will-change-transform"
@@ -106,13 +106,13 @@ export default function Home() {
             src="/gallery/hero.png"
             alt="The Green Valley International School Building"
             fill
-            className="object-cover object-left bg-slate-100"
+            className="object-cover object-left bg-transparent"
             priority
             quality={85}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66]/10 via-transparent to-transparent" />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-[1400px] px-6 w-full">
@@ -150,12 +150,16 @@ export default function Home() {
                     href={action.href}
                     target={action.icon === MapPin ? "_blank" : "_self"}
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    animate={{ y: [0, -8, 0], boxShadow: ["0px 0px 10px rgba(255,255,255,0.2)", "0px 0px 25px rgba(255,255,255,0.6)", "0px 0px 10px rgba(255,255,255,0.2)"] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                    animate={{
+                      y: [0, -10, 0],
+                      boxShadow: ["0px 0px 10px rgba(20,184,166,0.2)", "0px 0px 35px rgba(20,184,166,0.9)", "0px 0px 10px rgba(20,184,166,0.2)"],
+                      borderColor: ["rgba(255,255,255,0.3)", "rgba(20,184,166,0.8)", "rgba(255,255,255,0.3)"]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.15 }}
                     title={action.label}
-                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border-2 border-white/50 text-white shadow-xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group"
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-xl border-2 text-white shadow-2xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group z-20"
                   >
                     <action.icon className="h-6 w-6" />
                     {/* Tooltip */}
@@ -237,7 +241,7 @@ export default function Home() {
       <motion.section 
         style={{ scale: storyScale, rotateX: storyRotateX, y: storyIn }}
         id="about" 
-        className="relative min-h-screen py-32 lg:py-48 perspective-container bg-white/20 backdrop-blur-3xl shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/30 will-change-transform"
+        className="relative min-h-screen py-32 lg:py-48 perspective-container bg-white/5 backdrop-blur-3xl shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/10 will-change-transform"
       >
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
@@ -280,7 +284,7 @@ export default function Home() {
       {/* ═══════════════════ FACILITIES (ROLLER DIVE) ═══════════════════ */}
       <motion.section 
         style={{ scale: facilitiesScale, rotateX: facilitiesRotateX }}
-        className="relative min-h-screen py-40 bg-slate-50/20 backdrop-blur-[60px] perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/40 will-change-transform"
+        className="relative min-h-screen py-40 bg-white/5 backdrop-blur-[60px] perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/10 will-change-transform"
       >
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
@@ -325,7 +329,7 @@ export default function Home() {
       <motion.section 
         id="glimpses"
         style={{ scale: galleryScale }}
-        className="relative min-h-screen py-40 perspective-container z-40"
+        className="relative min-h-screen py-40 perspective-container z-40 bg-white/5 backdrop-blur-xl border-t border-white/10"
       >
         <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
           <motion.path d="M12 0 L12 100" stroke="#14b8a6" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
@@ -388,7 +392,7 @@ export default function Home() {
       </motion.section>
 
       {/* ═══════════════════ ADMISSIONS CTA ═══════════════════ */}
-      <motion.section className="py-48 bg-gradient-to-br from-[#0d3b66] via-[#0f4c75] to-[#1a6b6a] relative overflow-hidden perspective-container">
+      <motion.section className="py-48 bg-gradient-to-br from-[#0d3b66]/80 via-[#0f4c75]/80 to-[#1a6b6a]/80 backdrop-blur-3xl relative overflow-hidden perspective-container border-t border-white/10">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal-400/10 blur-[150px] animate-blob" />
           <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-400/10 blur-[150px] animate-blob animation-delay-2000" />
