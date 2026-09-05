@@ -82,7 +82,6 @@ export default function Home() {
   const facilitiesRotateX = useTransform(scrollYProgress, [0.4, 0.6], [-10, 0]);
 
   const galleryScale = useTransform(scrollYProgress, [0.6, 0.8], [0.85, 1]);
-  const contactScale = useTransform(scrollYProgress, [0.8, 1], [0.8, 1]);
 
   // Roller-Diving Transition (Hero to Story)
   const contentY = useTransform(scrollY, [0, 800], [0, -300]);
@@ -98,7 +97,7 @@ export default function Home() {
       <Navbar />
 
       {/* ═══════════════════ HERO (BASE LAYER) ═══════════════════ */}
-      <motion.section className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0 will-change-transform">
+      <motion.section id="contact" className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0 will-change-transform scroll-mt-24">
         <motion.div 
           style={{ scale: heroScale, rotateX: heroRotateX, opacity: heroOpacity, y: contentY }} 
           className="absolute inset-0 will-change-transform"
@@ -107,7 +106,7 @@ export default function Home() {
             src="/gallery/hero.png"
             alt="The Green Valley International School Building"
             fill
-            className="object-cover object-left bg-slate-100"
+            className="object-cover object-left bg-transparent"
             priority
             quality={85}
             sizes="100vw"
@@ -119,7 +118,7 @@ export default function Home() {
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-[1400px] px-6 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-24">
             <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-2xl">
-              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-5 py-2 mb-8">
+              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-5 py-2 mb-8">
                 <Star className="h-4 w-4 text-amber-400 fill-amber-400" />
                 <span className="text-sm font-semibold text-white/90">CBSE Affiliated &bull; Bihta, Patna</span>
               </motion.div>
@@ -151,15 +150,24 @@ export default function Home() {
                     href={action.href}
                     target={action.icon === MapPin ? "_blank" : "_self"}
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
+                    animate={{
+                      y: [0, -10, 0],
+                      boxShadow: ["0px 0px 10px rgba(20,184,166,0.2)", "0px 0px 35px rgba(20,184,166,0.9)", "0px 0px 10px rgba(20,184,166,0.2)"],
+                      borderColor: ["rgba(255,255,255,0.3)", "rgba(20,184,166,0.8)", "rgba(255,255,255,0.3)"]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.15 }}
                     title={action.label}
-                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 text-white shadow-xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group"
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/5 backdrop-blur-xl border-2 text-white shadow-2xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group z-20"
                   >
                     <action.icon className="h-6 w-6" />
-                    {/* Tooltip */}
-                    <span className="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0d3b66] text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none">
-                      {action.label}
+                    {/* Vertical Highlight / Tooltip */}
+                    <span className="absolute -bottom-16 opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300 flex flex-col items-center pointer-events-none">
+                      <div className="w-1 h-3 bg-teal-400 mb-1 rounded-full shadow-[0_0_8px_#2dd4bf]" />
+                      <span className="bg-[#0d3b66]/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-xl border border-white/20 uppercase tracking-wider">
+                        {action.label}
+                      </span>
                     </span>
                   </motion.a>
                 ))}
@@ -236,7 +244,7 @@ export default function Home() {
       <motion.section 
         style={{ scale: storyScale, rotateX: storyRotateX, y: storyIn }}
         id="about" 
-        className="relative min-h-screen py-32 lg:py-48 perspective-container bg-white/20 backdrop-blur-3xl shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/30 will-change-transform"
+        className="relative min-h-screen py-32 lg:py-48 perspective-container shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/10 will-change-transform bg-transparent"
       >
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
@@ -279,7 +287,7 @@ export default function Home() {
       {/* ═══════════════════ FACILITIES (ROLLER DIVE) ═══════════════════ */}
       <motion.section 
         style={{ scale: facilitiesScale, rotateX: facilitiesRotateX }}
-        className="relative min-h-screen py-40 bg-slate-50/20 backdrop-blur-[60px] perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/40 will-change-transform"
+        className="relative min-h-screen py-40 perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/10 will-change-transform bg-transparent"
       >
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
@@ -322,8 +330,9 @@ export default function Home() {
 
       {/* ═══════════════════ GALLERY PREVIEW (ROLLER) ═══════════════════ */}
       <motion.section 
+        id="glimpses"
         style={{ scale: galleryScale }}
-        className="relative min-h-screen py-40 perspective-container z-40"
+        className="relative min-h-screen py-40 perspective-container z-40 border-t border-white/10 bg-transparent"
       >
         <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
           <motion.path d="M12 0 L12 100" stroke="#14b8a6" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
@@ -385,104 +394,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* ═══════════════════ CONNECT WITH US (ROLLER) ═══════════════════ */}
-      <motion.section 
-        style={{ scale: contactScale }}
-        id="contact" 
-        className="relative min-h-screen py-40 perspective-container z-50"
-      >
-        <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
-          <motion.path d="M12 0 L12 100" stroke="#0d3b66" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
-        </motion.svg>
-        <div className="mx-auto max-w-[1400px] px-6 relative z-10">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={foldInLeft}
-            className="text-center max-w-3xl mx-auto mb-20"
-          >
-            <span className="text-sm font-black text-blue-600 uppercase tracking-[0.4em]">Get In Touch</span>
-            <h2 className="mt-6 text-5xl md:text-7xl font-extrabold text-[#0d3b66] tracking-tighter">Connect <span className="text-teal-500">With Us</span></h2>
-            <div className="mt-8 text-slate-500 text-xl font-medium opacity-80 leading-relaxed">
-              {"Reach out to our admissions team or visit our world-class campus in Bihta.".split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: i * 0.02, duration: 0.1 }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Quick Contact Cards */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              {[
-                { icon: MapPin, title: "Our Location", text: "Rameshwar Building, Bihta, Patna", color: "bg-teal-500" },
-                { icon: Phone, title: "Call Hotline", text: "+91 89359 01010", color: "bg-blue-600" },
-                { icon: Mail, title: "Email Support", text: "tgvisbihta@gmail.com", color: "bg-indigo-600" },
-                { icon: MessageCircle, title: "WhatsApp", text: "+91 89359 01010", color: "bg-emerald-600" },
-              ].map((c, i) => (
-                <motion.div 
-                  key={i} 
-                  whileHover={{ y: -10, rotateX: 2, rotateY: 2 }}
-                  className="rounded-[2.5rem] liquid-glass p-8 glass-border-glow shadow-xl group border border-white/50"
-                >
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${c.color} text-white shadow-2xl mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                    <c.icon className="h-6 w-6" />
-                  </div>
-                  <h4 className="text-lg font-bold text-[#0d3b66] mb-2 uppercase tracking-wide">{c.title}</h4>
-                  <p className="text-slate-500 font-semibold text-sm leading-relaxed">{c.text}</p>
-                </motion.div>
-              ))}
-              
-              {/* Specialized Contact Card (Hours) */}
-              <motion.div 
-                whileHover={{ scale: 1.02 }}
-                className="col-span-1 sm:col-span-2 rounded-[2.5rem] liquid-glass-premium p-10 glass-border-glow shadow-2xl mt-4 border border-white/60"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0d3b66] text-white shadow-xl"><Clock className="h-6 w-6" /></div>
-                  <div>
-                    <h4 className="font-black text-[#0d3b66] uppercase tracking-widest">Office Hours</h4>
-                    <p className="text-xs font-bold text-teal-600 uppercase mt-1 tracking-widest">Mon-Sat: 7:00 AM - 3:00 PM</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  <a href="https://maps.google.com/?q=The+Green+Valley+International+School+Bihta" target="_blank" className="bg-[#0d3b66] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-teal-700 transition-colors">Open in Maps</a>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Corrected Google Map Location */}
-            <motion.div 
-              initial={{ opacity: 0, rotateY: 15 }}
-              whileInView={{ opacity: 1, rotateY: 0 }}
-              viewport={{ once: true }}
-              className="relative rounded-[4rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.15)] h-[550px] border-[10px] border-white/50 liquid-glass-premium"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.5037878793282!2d84.8714212!3d25.5549008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398d5521940b669f%3A0x956837914da3ad52!2sThe%20Green%20Valley%20International%20School!5e0!3m2!1sen!2sin!4v1775061516627!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                title="TGVIS Location Map"
-                className="grayscale contrast-125 opacity-90 hover:grayscale-0 transition-all duration-700"
-              />
-              <div className="absolute inset-0 pointer-events-none border-[1px] border-white/40 rounded-[4rem]" />
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
       {/* ═══════════════════ ADMISSIONS CTA ═══════════════════ */}
-      <motion.section className="py-48 bg-gradient-to-br from-[#0d3b66] via-[#0f4c75] to-[#1a6b6a] relative overflow-hidden perspective-container">
+      <motion.section className="py-48 bg-transparent relative overflow-hidden perspective-container border-t border-white/10">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal-400/10 blur-[150px] animate-blob" />
           <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-400/10 blur-[150px] animate-blob animation-delay-2000" />
@@ -493,9 +406,9 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: "circOut" }}
-            className="rounded-[4rem] liquid-glass-dark p-16 md:p-24 glass-border-glow shadow-[0_0_100px_rgba(45,212,191,0.1)]"
+            className="rounded-[4rem] liquid-glass-dark p-16 md:p-24 glass-border-glow shadow-[0_0_100px_rgba(45,212,191,0.3)]"
           >
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2 mb-10">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-6 py-2 mb-10">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-teal-400" />
@@ -512,7 +425,7 @@ export default function Home() {
               <Link href="/admissions" className="group inline-flex items-center gap-3 rounded-full bg-white px-10 py-5 text-sm font-black text-[#0d3b66] shadow-2xl hover:bg-teal-50 transition-all hover:scale-110 active:scale-95 uppercase tracking-widest">
                 Apply Now <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
-              <a href="tel:+918935901010" className="inline-flex items-center gap-3 rounded-full border-2 border-white/30 bg-white/10 px-10 py-5 text-sm font-bold text-white hover:bg-white/20 transition-all group uppercase tracking-widest">
+              <a href="tel:+918935901010" className="inline-flex items-center gap-3 rounded-full border-2 border-white/30 bg-white/5 px-10 py-5 text-sm font-bold text-white hover:bg-white/10 transition-all group uppercase tracking-widest">
                 <Phone className="h-5 w-5" /> Call Hotline
               </a>
             </motion.div>

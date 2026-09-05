@@ -71,7 +71,7 @@ const jsonLd = {
 };
 
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import RopeBackground from "@/components/layout/RopeBackground";
+import EducationalBackground from "@/components/layout/EducationalBackground";
 
 export default function RootLayout({
   children,
@@ -79,17 +79,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} h-full antialiased bg-transparent`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans relative">
-        {/* Live Background 3D Ropes - Premium unified bg */}
-        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-slate-50/30">
-          <RopeBackground />
+      <body className="min-h-full flex flex-col font-sans relative bg-transparent text-slate-900">
+        {/* Educational 3D Background - Fully Transparent Base */}
+        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-transparent">
+          <EducationalBackground />
           
           {/* Theme Text background elements - Ultra-subtle */}
           <div className="absolute top-[20%] left-[10%] opacity-[0.03] animate-float pointer-events-none">
