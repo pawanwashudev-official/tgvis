@@ -97,21 +97,21 @@ export default function Home() {
       <Navbar />
 
       {/* ═══════════════════ HERO (BASE LAYER) ═══════════════════ */}
-      <motion.section id="contact" className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0 will-change-transform scroll-mt-24">
+      <motion.section id="contact" className="relative min-h-screen flex items-center overflow-hidden perspective-container z-10 will-change-transform scroll-mt-24">
         <motion.div 
-          style={{ scale: heroScale, rotateX: heroRotateX, opacity: heroOpacity, y: contentY }} 
+          style={{ scale: heroScale, rotateX: heroRotateX, opacity: heroOpacity, y: contentY }}
           className="absolute inset-0 will-change-transform"
         >
           <Image
             src="/gallery/hero.png"
             alt="The Green Valley International School Building"
             fill
-            className="object-cover object-left bg-transparent"
+            className="object-cover object-left bg-transparent mix-blend-overlay opacity-60"
             priority
-            quality={85}
+            quality={95}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/80 via-[#0d3b66]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66] via-transparent to-transparent" />
         </motion.div>
 
@@ -212,7 +212,7 @@ export default function Home() {
       </motion.section>
 
       {/* ═══════════════════ STATS (ROLL-OVER) ═══════════════════ */}
-      <motion.section className="relative z-10 -mt-32 perspective-container">
+      <motion.section className="relative z-20 -mt-32 perspective-container">
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.div
             initial="hidden"
@@ -254,7 +254,9 @@ export default function Home() {
             variants={foldInLeft}
             className="max-w-4xl mx-auto"
           >
-            <div className="text-center">
+            <div className="text-center rounded-[3rem] liquid-glass p-10 md:p-16 glass-border-glow shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-white/40 mix-blend-overlay pointer-events-none" />
+              <div className="relative z-10">
               <motion.span variants={fadeUp} className="text-sm font-black text-teal-600 uppercase tracking-[0.4em]">Establishment & Values</motion.span>
               <motion.h2 variants={fadeUp} className="mt-6 text-5xl lg:text-7xl font-extrabold text-[#0d3b66] tracking-tighter leading-[1] drop-shadow-sm">
                 Crafting <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">Greatness</span> Since Day One
@@ -278,6 +280,7 @@ export default function Home() {
                   </h3>
                   <p className="mt-4 text-slate-600 leading-relaxed font-medium opacity-80">We go beyond textbooks. We offer comprehensive programs including sports, arts, experiments, and regular PTMs (Parent-Teacher Meetings) for an all-round development approach.</p>
                 </div>
+              </div>
               </div>
             </div>
           </motion.div>
@@ -349,9 +352,6 @@ export default function Home() {
               <span className="text-sm font-black text-teal-600 uppercase tracking-[0.3em]">Campus Gallery</span>
               <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-[#0d3b66] tracking-tight">A Glimpse Into Our World</h2>
             </div>
-            <Link href="/#glimpses" className="group inline-flex items-center gap-3 rounded-full border-2 border-[#0d3b66] px-8 py-3 text-sm font-black text-[#0d3b66] hover:bg-[#0d3b66] hover:text-white transition-all shrink-0 uppercase tracking-widest">
-              Full Gallery <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
           </motion.div>
 
           <div className="relative">
@@ -438,12 +438,6 @@ export default function Home() {
       {/* Sticky Bottom Navigation CTA for mobile & desktop */}
       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 pointer-events-none">
         <div className="mx-auto max-w-[1400px] flex justify-center sm:justify-end gap-4 pointer-events-auto">
-          <Link
-            href="/#glimpses"
-            className="flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-6 py-3 text-sm font-bold text-[#0d3b66] shadow-2xl border border-white/50 hover:bg-white hover:scale-105 transition-all"
-          >
-            <span className="hidden sm:inline">View</span> Gallery
-          </Link>
           <Link
             href="/admissions"
             className="flex items-center gap-2 rounded-full bg-teal-500/90 backdrop-blur-md px-6 py-3 text-sm font-bold text-white shadow-2xl hover:bg-teal-500 hover:scale-105 transition-all"
