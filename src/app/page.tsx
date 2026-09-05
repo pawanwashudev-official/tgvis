@@ -82,7 +82,6 @@ export default function Home() {
   const facilitiesRotateX = useTransform(scrollYProgress, [0.4, 0.6], [-10, 0]);
 
   const galleryScale = useTransform(scrollYProgress, [0.6, 0.8], [0.85, 1]);
-  const contactScale = useTransform(scrollYProgress, [0.8, 1], [0.8, 1]);
 
   // Roller-Diving Transition (Hero to Story)
   const contentY = useTransform(scrollY, [0, 800], [0, -300]);
@@ -98,7 +97,7 @@ export default function Home() {
       <Navbar />
 
       {/* ═══════════════════ HERO (BASE LAYER) ═══════════════════ */}
-      <motion.section className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0 will-change-transform">
+      <motion.section id="contact" className="relative h-screen sticky top-0 flex items-center overflow-hidden perspective-container z-0 will-change-transform">
         <motion.div 
           style={{ scale: heroScale, rotateX: heroRotateX, opacity: heroOpacity, y: contentY }} 
           className="absolute inset-0 will-change-transform"
@@ -153,8 +152,10 @@ export default function Home() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
+                    animate={{ y: [0, -8, 0], boxShadow: ["0px 0px 10px rgba(255,255,255,0.2)", "0px 0px 25px rgba(255,255,255,0.6)", "0px 0px 10px rgba(255,255,255,0.2)"] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
                     title={action.label}
-                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 text-white shadow-xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group"
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border-2 border-white/50 text-white shadow-xl hover:bg-white hover:text-[#0d3b66] transition-colors relative group"
                   >
                     <action.icon className="h-6 w-6" />
                     {/* Tooltip */}
@@ -322,6 +323,7 @@ export default function Home() {
 
       {/* ═══════════════════ GALLERY PREVIEW (ROLLER) ═══════════════════ */}
       <motion.section 
+        id="glimpses"
         style={{ scale: galleryScale }}
         className="relative min-h-screen py-40 perspective-container z-40"
       >
@@ -381,102 +383,6 @@ export default function Home() {
                 <ArrowRight className="w-6 h-6" />
               </button>
             </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* ═══════════════════ CONNECT WITH US (ROLLER) ═══════════════════ */}
-      <motion.section 
-        style={{ scale: contactScale }}
-        id="contact" 
-        className="relative min-h-screen py-40 perspective-container z-50"
-      >
-        <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
-          <motion.path d="M12 0 L12 100" stroke="#0d3b66" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
-        </motion.svg>
-        <div className="mx-auto max-w-[1400px] px-6 relative z-10">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={foldInLeft}
-            className="text-center max-w-3xl mx-auto mb-20"
-          >
-            <span className="text-sm font-black text-blue-600 uppercase tracking-[0.4em]">Get In Touch</span>
-            <h2 className="mt-6 text-5xl md:text-7xl font-extrabold text-[#0d3b66] tracking-tighter">Connect <span className="text-teal-500">With Us</span></h2>
-            <div className="mt-8 text-slate-500 text-xl font-medium opacity-80 leading-relaxed">
-              {"Reach out to our admissions team or visit our world-class campus in Bihta.".split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: i * 0.02, duration: 0.1 }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Quick Contact Cards */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              {[
-                { icon: MapPin, title: "Our Location", text: "Rameshwar Building, Bihta, Patna", color: "bg-teal-500" },
-                { icon: Phone, title: "Call Hotline", text: "+91 89359 01010", color: "bg-blue-600" },
-                { icon: Mail, title: "Email Support", text: "tgvisbihta@gmail.com", color: "bg-indigo-600" },
-                { icon: MessageCircle, title: "WhatsApp", text: "+91 89359 01010", color: "bg-emerald-600" },
-              ].map((c, i) => (
-                <motion.div 
-                  key={i} 
-                  whileHover={{ y: -10, rotateX: 2, rotateY: 2 }}
-                  className="rounded-[2.5rem] liquid-glass p-8 glass-border-glow shadow-xl group border border-white/50"
-                >
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${c.color} text-white shadow-2xl mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                    <c.icon className="h-6 w-6" />
-                  </div>
-                  <h4 className="text-lg font-bold text-[#0d3b66] mb-2 uppercase tracking-wide">{c.title}</h4>
-                  <p className="text-slate-500 font-semibold text-sm leading-relaxed">{c.text}</p>
-                </motion.div>
-              ))}
-              
-              {/* Specialized Contact Card (Hours) */}
-              <motion.div 
-                whileHover={{ scale: 1.02 }}
-                className="col-span-1 sm:col-span-2 rounded-[2.5rem] liquid-glass-premium p-10 glass-border-glow shadow-2xl mt-4 border border-white/60"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0d3b66] text-white shadow-xl"><Clock className="h-6 w-6" /></div>
-                  <div>
-                    <h4 className="font-black text-[#0d3b66] uppercase tracking-widest">Office Hours</h4>
-                    <p className="text-xs font-bold text-teal-600 uppercase mt-1 tracking-widest">Mon-Sat: 7:00 AM - 3:00 PM</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  <a href="https://maps.google.com/?q=The+Green+Valley+International+School+Bihta" target="_blank" className="bg-[#0d3b66] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-teal-700 transition-colors">Open in Maps</a>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Corrected Google Map Location */}
-            <motion.div 
-              initial={{ opacity: 0, rotateY: 15 }}
-              whileInView={{ opacity: 1, rotateY: 0 }}
-              viewport={{ once: true }}
-              className="relative rounded-[4rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.15)] h-[550px] border-[10px] border-white/50 liquid-glass-premium"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3599.5037878793282!2d84.8714212!3d25.5549008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398d5521940b669f%3A0x956837914da3ad52!2sThe%20Green%20Valley%20International%20School!5e0!3m2!1sen!2sin!4v1775061516627!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                title="TGVIS Location Map"
-                className="grayscale contrast-125 opacity-90 hover:grayscale-0 transition-all duration-700"
-              />
-              <div className="absolute inset-0 pointer-events-none border-[1px] border-white/40 rounded-[4rem]" />
-            </motion.div>
           </div>
         </div>
       </motion.section>
