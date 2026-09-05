@@ -106,12 +106,13 @@ export default function Home() {
             src="/gallery/hero.png"
             alt="The Green Valley International School Building"
             fill
-            className="object-cover object-left bg-transparent opacity-20"
+            className="object-cover object-left bg-transparent"
             priority
             quality={85}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66] via-transparent to-transparent" />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-[1400px] px-6 w-full">
@@ -243,7 +244,7 @@ export default function Home() {
       <motion.section 
         style={{ scale: storyScale, rotateX: storyRotateX, y: storyIn }}
         id="about" 
-        className="relative min-h-screen py-32 lg:py-48 perspective-container bg-white/5 backdrop-blur-3xl shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/10 will-change-transform"
+        className="relative min-h-screen py-32 lg:py-48 perspective-container shadow-[-50px_0_100px_rgba(0,0,0,0.1)] z-10 border-t border-white/10 will-change-transform bg-transparent"
       >
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
@@ -286,7 +287,7 @@ export default function Home() {
       {/* ═══════════════════ FACILITIES (ROLLER DIVE) ═══════════════════ */}
       <motion.section 
         style={{ scale: facilitiesScale, rotateX: facilitiesRotateX }}
-        className="relative min-h-screen py-40 bg-white/5 backdrop-blur-[60px] perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/10 will-change-transform"
+        className="relative min-h-screen py-40 perspective-container shadow-[0_-50px_100px_rgba(0,0,0,0.15)] z-30 border-t border-white/10 will-change-transform bg-transparent"
       >
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.div 
@@ -331,7 +332,7 @@ export default function Home() {
       <motion.section 
         id="glimpses"
         style={{ scale: galleryScale }}
-        className="relative min-h-screen py-40 perspective-container z-40 bg-white/5 backdrop-blur-xl border-t border-white/10"
+        className="relative min-h-screen py-40 perspective-container z-40 border-t border-white/10 bg-transparent"
       >
         <motion.svg className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-12 h-40 z-0 opacity-50" viewBox="0 0 24 100">
           <motion.path d="M12 0 L12 100" stroke="#14b8a6" strokeWidth="2" strokeDasharray="4 4" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 1.5 }} />
@@ -394,10 +395,10 @@ export default function Home() {
       </motion.section>
 
       {/* ═══════════════════ ADMISSIONS CTA ═══════════════════ */}
-      <motion.section className="py-48 bg-transparent backdrop-blur-3xl relative overflow-hidden perspective-container border-t border-white/10">
+      <motion.section className="py-48 bg-transparent relative overflow-hidden perspective-container border-t border-white/10">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal-400/5 blur-[150px] animate-blob" />
-          <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-400/5 blur-[150px] animate-blob animation-delay-2000" />
+          <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-teal-400/10 blur-[150px] animate-blob" />
+          <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-400/10 blur-[150px] animate-blob animation-delay-2000" />
         </div>
         <div className="mx-auto max-w-[1400px] px-6 relative z-10 text-center">
           <motion.div
