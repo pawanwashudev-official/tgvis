@@ -69,6 +69,11 @@ export default function Home() {
 
   const { scrollY } = useScroll();
   
+  // 3D Perspective & Hero Effects
+  const heroScale = useTransform(scrollY, [0, 800], [1, 0.85]);
+  const heroRotateX = useTransform(scrollY, [0, 800], [0, 10]);
+  const heroOpacity = useTransform(scrollY, [0, 800], [1, 0.2]);
+
   // Section-specific transforms for "Stacked" feel
   const storyScale = useTransform(scrollYProgress, [0.1, 0.3], [0.95, 1]);
   const storyRotateX = useTransform(scrollYProgress, [0.1, 0.3], [10, 0]);
@@ -79,6 +84,7 @@ export default function Home() {
   const galleryScale = useTransform(scrollYProgress, [0.6, 0.8], [0.85, 1]);
 
   // Roller-Diving Transition (Hero to Story)
+  const contentY = useTransform(scrollY, [0, 800], [0, -300]);
   const storyIn = useTransform(scrollY, [200, 1000], [400, 0]);
 
   // Logo 3D Tilt (Holographic Feel)
@@ -91,24 +97,25 @@ export default function Home() {
       <Navbar />
 
       {/* ═══════════════════ HERO (BASE LAYER) ═══════════════════ */}
-      <motion.section id="contact" className="relative min-h-screen flex items-center overflow-hidden z-0 scroll-mt-24">
+      <motion.section id="contact" className="relative min-h-screen flex items-center overflow-hidden perspective-container z-10 will-change-transform scroll-mt-24">
         <motion.div 
-          className="absolute inset-0"
+          style={{ scale: heroScale, rotateX: heroRotateX, opacity: heroOpacity, y: contentY }}
+          className="absolute inset-0 will-change-transform"
         >
           <Image
             src="/gallery/hero.png"
             alt="The Green Valley International School Building"
             fill
-            className="object-cover object-left bg-transparent"
+            className="object-cover object-left bg-transparent mix-blend-overlay opacity-60"
             priority
-            quality={85}
+            quality={95}
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66]/80 via-[#0d3b66]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d3b66] via-transparent to-transparent" />
         </motion.div>
 
-        <motion.div className="relative z-10 mx-auto max-w-[1400px] px-6 w-full">
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-[1400px] px-6 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-24">
             <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-2xl">
               <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-5 py-2 mb-8">
@@ -205,7 +212,7 @@ export default function Home() {
       </motion.section>
 
       {/* ═══════════════════ STATS (ROLL-OVER) ═══════════════════ */}
-      <motion.section className="relative z-10 perspective-container">
+      <motion.section className="relative z-20 -mt-32 perspective-container">
         <div className="mx-auto max-w-[1400px] px-6">
           <motion.div
             initial="hidden"
@@ -247,30 +254,33 @@ export default function Home() {
             variants={foldInLeft}
             className="max-w-4xl mx-auto"
           >
-            <div className="text-center rounded-[3rem] liquid-glass p-10 md:p-16 glass-border-glow shadow-2xl">
+            <div className="text-center rounded-[3rem] liquid-glass p-10 md:p-16 glass-border-glow shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-white/40 mix-blend-overlay pointer-events-none" />
+              <div className="relative z-10">
               <motion.span variants={fadeUp} className="text-sm font-black text-teal-600 uppercase tracking-[0.4em]">Establishment & Values</motion.span>
               <motion.h2 variants={fadeUp} className="mt-6 text-5xl lg:text-7xl font-extrabold text-[#0d3b66] tracking-tighter leading-[1] drop-shadow-sm">
                 Crafting <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">Greatness</span> Since Day One
               </motion.h2>
-              <motion.p variants={fadeUp} className="mt-10 text-slate-600 leading-relaxed text-xl font-medium opacity-90 max-w-xl mx-auto">
+              <motion.p variants={fadeUp} className="mt-10 text-slate-600 leading-relaxed text-xl font-medium opacity-90 max-w-xl">
                 The Green Valley International School is recognized as the best CBSE school in Bihta, Patna. We offer a world-class educational experience combining modern pedagogy, state-of-the-art facilities, and deep-rooted cultural values to ensure that every student thrives.
               </motion.p>
               
-              <div className="mt-14 space-y-8 text-left">
-                <div className="p-8 rounded-[2.5rem] bg-white/40 backdrop-blur-md glass-border-glow shadow-xl hover:translate-x-4 transition-transform duration-500">
+              <div className="mt-14 space-y-8">
+                <div className="p-8 rounded-[2.5rem] liquid-glass glass-border-glow shadow-xl hover:translate-x-4 transition-transform duration-500">
                   <h3 className="font-black text-[#0d3b66] text-xl flex items-center gap-4 uppercase tracking-wider">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500 text-white shadow-lg"><Star className="h-6 w-6" /></div>
                     Exceptional Educators
                   </h3>
                   <p className="mt-4 text-slate-600 leading-relaxed font-medium opacity-80">Our teachers are highly qualified, passionate, and dedicated to student success. They act as mentors who guide, inspire, and foster a love for lifelong learning in every child.</p>
                 </div>
-                <div className="p-8 rounded-[2.5rem] bg-white/40 backdrop-blur-md glass-border-glow shadow-xl hover:translate-x-4 transition-transform duration-500">
+                <div className="p-8 rounded-[2.5rem] liquid-glass glass-border-glow shadow-xl hover:translate-x-4 transition-transform duration-500">
                   <h3 className="font-black text-[#0d3b66] text-xl flex items-center gap-4 uppercase tracking-wider">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg"><Target className="h-6 w-6" /></div>
                     Holistic Development
                   </h3>
                   <p className="mt-4 text-slate-600 leading-relaxed font-medium opacity-80">We go beyond textbooks. We offer comprehensive programs including sports, arts, experiments, and regular PTMs (Parent-Teacher Meetings) for an all-round development approach.</p>
                 </div>
+              </div>
               </div>
             </div>
           </motion.div>
@@ -428,12 +438,6 @@ export default function Home() {
       {/* Sticky Bottom Navigation CTA for mobile & desktop */}
       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 pointer-events-none">
         <div className="mx-auto max-w-[1400px] flex justify-center sm:justify-end gap-4 pointer-events-auto">
-          <Link
-            href="/#glimpses"
-            className="flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md px-6 py-3 text-sm font-bold text-[#0d3b66] shadow-2xl border border-white/50 hover:bg-white hover:scale-105 transition-all"
-          >
-            <span className="hidden sm:inline">View</span> Gallery
-          </Link>
           <Link
             href="/admissions"
             className="flex items-center gap-2 rounded-full bg-teal-500/90 backdrop-blur-md px-6 py-3 text-sm font-bold text-white shadow-2xl hover:bg-teal-500 hover:scale-105 transition-all"
